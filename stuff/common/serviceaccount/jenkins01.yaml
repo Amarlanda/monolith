@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/component: jenkins-master
+    app.kubernetes.io/instance: jenkins01
+    app.kubernetes.io/managed-by: Tiller
+    app.kubernetes.io/name: jenkins
+    helm.sh/chart: jenkins-1.1.16
+  name: jenkins01
+  selfLink: /api/v1/namespaces/default/serviceaccounts/jenkins01
+secrets:
+- name: jenkins01-token-p5zd8

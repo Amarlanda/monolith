@@ -1,0 +1,1015 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "kubernetes.io/limit-ranger": "LimitRanger plugin set: cpu request for container nginx-ingress-controller"
+                },
+                "creationTimestamp": "2019-04-10T12:24:44Z",
+                "generateName": "idle-meerkat-nginx-ingress-controller-fb49f494c-",
+                "labels": {
+                    "app": "nginx-ingress",
+                    "component": "controller",
+                    "pod-template-hash": "960590507",
+                    "release": "idle-meerkat"
+                },
+                "name": "idle-meerkat-nginx-ingress-controller-fb49f494c-vldzq",
+                "namespace": "default",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "idle-meerkat-nginx-ingress-controller-fb49f494c",
+                        "uid": "9f99b195-5b8b-11e9-b0d1-42010a9a001a"
+                    }
+                ],
+                "resourceVersion": "4934",
+                "selfLink": "/api/v1/namespaces/default/pods/idle-meerkat-nginx-ingress-controller-fb49f494c-vldzq",
+                "uid": "9fa337ee-5b8b-11e9-b0d1-42010a9a001a"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "args": [
+                            "/nginx-ingress-controller",
+                            "--default-backend-service=default/idle-meerkat-nginx-ingress-default-backend",
+                            "--election-id=ingress-controller-leader",
+                            "--ingress-class=nginx",
+                            "--configmap=default/idle-meerkat-nginx-ingress-controller"
+                        ],
+                        "env": [
+                            {
+                                "name": "POD_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.name"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "POD_NAMESPACE",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.namespace"
+                                    }
+                                }
+                            }
+                        ],
+                        "image": "quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.23.0",
+                        "imagePullPolicy": "IfNotPresent",
+                        "livenessProbe": {
+                            "failureThreshold": 3,
+                            "httpGet": {
+                                "path": "/healthz",
+                                "port": 10254,
+                                "scheme": "HTTP"
+                            },
+                            "initialDelaySeconds": 10,
+                            "periodSeconds": 10,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "name": "nginx-ingress-controller",
+                        "ports": [
+                            {
+                                "containerPort": 80,
+                                "name": "http",
+                                "protocol": "TCP"
+                            },
+                            {
+                                "containerPort": 443,
+                                "name": "https",
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "readinessProbe": {
+                            "failureThreshold": 3,
+                            "httpGet": {
+                                "path": "/healthz",
+                                "port": 10254,
+                                "scheme": "HTTP"
+                            },
+                            "initialDelaySeconds": 10,
+                            "periodSeconds": 10,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "resources": {
+                            "requests": {
+                                "cpu": "100m"
+                            }
+                        },
+                        "securityContext": {
+                            "capabilities": {
+                                "add": [
+                                    "NET_BIND_SERVICE"
+                                ],
+                                "drop": [
+                                    "ALL"
+                                ]
+                            },
+                            "runAsUser": 33
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "idle-meerkat-nginx-ingress-token-pcmwf",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "nodeName": "gke-jenkins-cd-default-pool-0afefa65-3b7c",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "idle-meerkat-nginx-ingress",
+                "serviceAccountName": "idle-meerkat-nginx-ingress",
+                "terminationGracePeriodSeconds": 60,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "idle-meerkat-nginx-ingress-token-pcmwf",
+                        "secret": {
+                            "defaultMode": 420,
+                            "secretName": "idle-meerkat-nginx-ingress-token-pcmwf"
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-04-10T12:24:44Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-04-10T12:25:18Z",
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": null,
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-04-10T12:24:44Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "docker://1ca11cd9ec818e474a3874b4fa536b7b61a179b39594300bd17436b7d44f3c3a",
+                        "image": "quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.23.0",
+                        "imageID": "docker-pullable://quay.io/kubernetes-ingress-controller/nginx-ingress-controller@sha256:e1292564ba5f1fd75005a4575778523d3309fb5d5d57f6597234c0b1567641f6",
+                        "lastState": {},
+                        "name": "nginx-ingress-controller",
+                        "ready": true,
+                        "restartCount": 0,
+                        "state": {
+                            "running": {
+                                "startedAt": "2019-04-10T12:25:06Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "10.154.0.49",
+                "phase": "Running",
+                "podIP": "10.24.0.8",
+                "qosClass": "Burstable",
+                "startTime": "2019-04-10T12:24:44Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "kubernetes.io/limit-ranger": "LimitRanger plugin set: cpu request for container nginx-ingress-default-backend"
+                },
+                "creationTimestamp": "2019-04-10T12:24:44Z",
+                "generateName": "idle-meerkat-nginx-ingress-default-backend-6d7555d4ff-",
+                "labels": {
+                    "app": "nginx-ingress",
+                    "component": "default-backend",
+                    "pod-template-hash": "2831118099",
+                    "release": "idle-meerkat"
+                },
+                "name": "idle-meerkat-nginx-ingress-default-backend-6d7555d4ff-z8v29",
+                "namespace": "default",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "idle-meerkat-nginx-ingress-default-backend-6d7555d4ff",
+                        "uid": "9f9b7e6e-5b8b-11e9-b0d1-42010a9a001a"
+                    }
+                ],
+                "resourceVersion": "4854",
+                "selfLink": "/api/v1/namespaces/default/pods/idle-meerkat-nginx-ingress-default-backend-6d7555d4ff-z8v29",
+                "uid": "9fa5dd44-5b8b-11e9-b0d1-42010a9a001a"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "image": "k8s.gcr.io/defaultbackend:1.4",
+                        "imagePullPolicy": "IfNotPresent",
+                        "livenessProbe": {
+                            "failureThreshold": 3,
+                            "httpGet": {
+                                "path": "/healthz",
+                                "port": 8080,
+                                "scheme": "HTTP"
+                            },
+                            "initialDelaySeconds": 30,
+                            "periodSeconds": 10,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 5
+                        },
+                        "name": "nginx-ingress-default-backend",
+                        "ports": [
+                            {
+                                "containerPort": 8080,
+                                "name": "http",
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "resources": {
+                            "requests": {
+                                "cpu": "100m"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "default-token-86rmx",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "nodeName": "gke-jenkins-cd-default-pool-0afefa65-htx3",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 60,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "default-token-86rmx",
+                        "secret": {
+                            "defaultMode": 420,
+                            "secretName": "default-token-86rmx"
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-04-10T12:24:44Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-04-10T12:24:47Z",
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": null,
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-04-10T12:24:44Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "docker://02dd34216ad97f6c249d019da8b3bd3b58f13cea23d349c79b93c06ef11c2605",
+                        "image": "k8s.gcr.io/defaultbackend:1.4",
+                        "imageID": "docker-pullable://k8s.gcr.io/defaultbackend@sha256:865b0c35e6da393b8e80b7e3799f777572399a4cff047eb02a81fa6e7a48ed4b",
+                        "lastState": {},
+                        "name": "nginx-ingress-default-backend",
+                        "ready": true,
+                        "restartCount": 0,
+                        "state": {
+                            "running": {
+                                "startedAt": "2019-04-10T12:24:46Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "10.154.0.50",
+                "phase": "Running",
+                "podIP": "10.24.1.12",
+                "qosClass": "Burstable",
+                "startTime": "2019-04-10T12:24:44Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "checksum/config": "872d486323c5b258d9d1fb26ab51f6e6f934b3a4f5b8adfef319bf4723d7c65a"
+                },
+                "creationTimestamp": "2019-04-10T11:59:59Z",
+                "generateName": "jenkins01-686fc849f7-",
+                "labels": {
+                    "app": "jenkins01",
+                    "chart": "jenkins-0.37.1",
+                    "component": "jenkins01-jenkins-master",
+                    "heritage": "Tiller",
+                    "pod-template-hash": "2429740593",
+                    "release": "jenkins01"
+                },
+                "name": "jenkins01-686fc849f7-x4d4v",
+                "namespace": "default",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "jenkins01-686fc849f7",
+                        "uid": "2a283dee-5b88-11e9-b0d1-42010a9a001a"
+                    }
+                ],
+                "resourceVersion": "1606",
+                "selfLink": "/api/v1/namespaces/default/pods/jenkins01-686fc849f7-x4d4v",
+                "uid": "2a2e6082-5b88-11e9-b0d1-42010a9a001a"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "args": [
+                            "--argumentsRealm.passwd.$(ADMIN_USER)=$(ADMIN_PASSWORD)",
+                            "--argumentsRealm.roles.$(ADMIN_USER)=admin"
+                        ],
+                        "env": [
+                            {
+                                "name": "JAVA_OPTS",
+                                "value": "-Dhudson.slaves.NodeProvisioner.initialDelay=0 -Dhudson.slaves.NodeProvisioner.MARGIN=50 -Dhudson.slaves.NodeProvisioner.MARGIN0=0.85"
+                            },
+                            {
+                                "name": "JENKINS_OPTS"
+                            },
+                            {
+                                "name": "JENKINS_SLAVE_AGENT_PORT",
+                                "value": "50000"
+                            },
+                            {
+                                "name": "ADMIN_PASSWORD",
+                                "valueFrom": {
+                                    "secretKeyRef": {
+                                        "key": "jenkins-admin-password",
+                                        "name": "jenkins01"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "ADMIN_USER",
+                                "valueFrom": {
+                                    "secretKeyRef": {
+                                        "key": "jenkins-admin-user",
+                                        "name": "jenkins01"
+                                    }
+                                }
+                            }
+                        ],
+                        "image": "jenkins/jenkins:lts-alpine",
+                        "imagePullPolicy": "Always",
+                        "livenessProbe": {
+                            "failureThreshold": 12,
+                            "httpGet": {
+                                "path": "/login",
+                                "port": "http",
+                                "scheme": "HTTP"
+                            },
+                            "initialDelaySeconds": 90,
+                            "periodSeconds": 10,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 5
+                        },
+                        "name": "jenkins01",
+                        "ports": [
+                            {
+                                "containerPort": 8080,
+                                "name": "http",
+                                "protocol": "TCP"
+                            },
+                            {
+                                "containerPort": 50000,
+                                "name": "slavelistener",
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "readinessProbe": {
+                            "failureThreshold": 3,
+                            "httpGet": {
+                                "path": "/login",
+                                "port": "http",
+                                "scheme": "HTTP"
+                            },
+                            "initialDelaySeconds": 60,
+                            "periodSeconds": 10,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "resources": {
+                            "limits": {
+                                "cpu": "2",
+                                "memory": "4Gi"
+                            },
+                            "requests": {
+                                "cpu": "50m",
+                                "memory": "256Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/tmp",
+                                "name": "tmp"
+                            },
+                            {
+                                "mountPath": "/var/jenkins_home",
+                                "name": "jenkins-home"
+                            },
+                            {
+                                "mountPath": "/var/jenkins_config",
+                                "name": "jenkins-config",
+                                "readOnly": true
+                            },
+                            {
+                                "mountPath": "/usr/share/jenkins/ref/plugins/",
+                                "name": "plugin-dir"
+                            },
+                            {
+                                "mountPath": "/usr/share/jenkins/ref/secrets/",
+                                "name": "secrets-dir"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "default-token-86rmx",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "initContainers": [
+                    {
+                        "command": [
+                            "sh",
+                            "/var/jenkins_config/apply_config.sh"
+                        ],
+                        "env": [
+                            {
+                                "name": "ADMIN_PASSWORD",
+                                "valueFrom": {
+                                    "secretKeyRef": {
+                                        "key": "jenkins-admin-password",
+                                        "name": "jenkins01"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "ADMIN_USER",
+                                "valueFrom": {
+                                    "secretKeyRef": {
+                                        "key": "jenkins-admin-user",
+                                        "name": "jenkins01"
+                                    }
+                                }
+                            }
+                        ],
+                        "image": "jenkins/jenkins:lts-alpine",
+                        "imagePullPolicy": "Always",
+                        "name": "copy-default-config",
+                        "resources": {
+                            "limits": {
+                                "cpu": "2",
+                                "memory": "4Gi"
+                            },
+                            "requests": {
+                                "cpu": "50m",
+                                "memory": "256Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/tmp",
+                                "name": "tmp"
+                            },
+                            {
+                                "mountPath": "/var/jenkins_home",
+                                "name": "jenkins-home"
+                            },
+                            {
+                                "mountPath": "/var/jenkins_config",
+                                "name": "jenkins-config"
+                            },
+                            {
+                                "mountPath": "/usr/share/jenkins/ref/plugins",
+                                "name": "plugins"
+                            },
+                            {
+                                "mountPath": "/var/jenkins_plugins",
+                                "name": "plugin-dir"
+                            },
+                            {
+                                "mountPath": "/usr/share/jenkins/ref/secrets/",
+                                "name": "secrets-dir"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "default-token-86rmx",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "nodeName": "gke-jenkins-cd-default-pool-0afefa65-htx3",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                    "runAsUser": 0
+                },
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "emptyDir": {},
+                        "name": "plugins"
+                    },
+                    {
+                        "emptyDir": {},
+                        "name": "tmp"
+                    },
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "name": "jenkins01"
+                        },
+                        "name": "jenkins-config"
+                    },
+                    {
+                        "emptyDir": {},
+                        "name": "plugin-dir"
+                    },
+                    {
+                        "emptyDir": {},
+                        "name": "secrets-dir"
+                    },
+                    {
+                        "name": "jenkins-home",
+                        "persistentVolumeClaim": {
+                            "claimName": "jenkins01"
+                        }
+                    },
+                    {
+                        "name": "default-token-86rmx",
+                        "secret": {
+                            "defaultMode": 420,
+                            "secretName": "default-token-86rmx"
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-04-10T12:00:37Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-04-10T12:01:53Z",
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": null,
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-04-10T12:00:02Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "docker://072c7a28e64d4a1b23e56efaabc3771f70dd629210bd6f27c67448d7b1d29330",
+                        "image": "jenkins/jenkins:lts-alpine",
+                        "imageID": "docker-pullable://jenkins/jenkins@sha256:139d41c64883437a46ee0471a03087538c3ee3347151bae6099e4babf7ede8f2",
+                        "lastState": {},
+                        "name": "jenkins01",
+                        "ready": true,
+                        "restartCount": 0,
+                        "state": {
+                            "running": {
+                                "startedAt": "2019-04-10T12:00:39Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "10.154.0.50",
+                "initContainerStatuses": [
+                    {
+                        "containerID": "docker://dc31a55c978f7e38df2cdce3122675353d0490d2ae1a674b5fbea588116c567c",
+                        "image": "jenkins/jenkins:lts-alpine",
+                        "imageID": "docker-pullable://jenkins/jenkins@sha256:139d41c64883437a46ee0471a03087538c3ee3347151bae6099e4babf7ede8f2",
+                        "lastState": {},
+                        "name": "copy-default-config",
+                        "ready": true,
+                        "restartCount": 0,
+                        "state": {
+                            "terminated": {
+                                "containerID": "docker://dc31a55c978f7e38df2cdce3122675353d0490d2ae1a674b5fbea588116c567c",
+                                "exitCode": 0,
+                                "finishedAt": "2019-04-10T12:00:36Z",
+                                "reason": "Completed",
+                                "startedAt": "2019-04-10T12:00:23Z"
+                            }
+                        }
+                    }
+                ],
+                "phase": "Running",
+                "podIP": "10.24.1.11",
+                "qosClass": "Burstable",
+                "startTime": "2019-04-10T12:00:02Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "kubernetes.io/limit-ranger": "LimitRanger plugin set: cpu request for container web"
+                },
+                "creationTimestamp": "2019-04-10T18:02:53Z",
+                "generateName": "web-db64c7b59-",
+                "labels": {
+                    "pod-template-hash": "862073615",
+                    "run": "web"
+                },
+                "name": "web-db64c7b59-cnbdx",
+                "namespace": "default",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "web-db64c7b59",
+                        "uid": "dcabe7d4-5bba-11e9-b0d1-42010a9a001a"
+                    }
+                ],
+                "resourceVersion": "54809",
+                "selfLink": "/api/v1/namespaces/default/pods/web-db64c7b59-cnbdx",
+                "uid": "dcafcc75-5bba-11e9-b0d1-42010a9a001a"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "image": "gcr.io/google-samples/hello-app:1.0",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "web",
+                        "ports": [
+                            {
+                                "containerPort": 8080,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "resources": {
+                            "requests": {
+                                "cpu": "100m"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "default-token-86rmx",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "nodeName": "gke-jenkins-cd-default-pool-0afefa65-htx3",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "default-token-86rmx",
+                        "secret": {
+                            "defaultMode": 420,
+                            "secretName": "default-token-86rmx"
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-04-10T18:02:53Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-04-10T18:02:55Z",
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": null,
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-04-10T18:02:53Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "docker://5f831a1ec516d32acbc3f8fe5482904dce56b0c23de9dd255b10870a4841f47f",
+                        "image": "gcr.io/google-samples/hello-app:1.0",
+                        "imageID": "docker-pullable://gcr.io/google-samples/hello-app@sha256:c62ead5b8c15c231f9e786250b07909daf6c266d0fcddd93fea882eb722c3be4",
+                        "lastState": {},
+                        "name": "web",
+                        "ready": true,
+                        "restartCount": 0,
+                        "state": {
+                            "running": {
+                                "startedAt": "2019-04-10T18:02:55Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "10.154.0.50",
+                "phase": "Running",
+                "podIP": "10.24.1.13",
+                "qosClass": "Burstable",
+                "startTime": "2019-04-10T18:02:53Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "kubernetes.io/limit-ranger": "LimitRanger plugin set: cpu request for container web1"
+                },
+                "creationTimestamp": "2019-04-10T18:04:44Z",
+                "generateName": "web1-7f5b745587-",
+                "labels": {
+                    "pod-template-hash": "3916301143",
+                    "run": "web1"
+                },
+                "name": "web1-7f5b745587-x6bpm",
+                "namespace": "default",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "web1-7f5b745587",
+                        "uid": "1e7d8fd2-5bbb-11e9-b0d1-42010a9a001a"
+                    }
+                ],
+                "resourceVersion": "55103",
+                "selfLink": "/api/v1/namespaces/default/pods/web1-7f5b745587-x6bpm",
+                "uid": "1e81cca4-5bbb-11e9-b0d1-42010a9a001a"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "image": "gcr.io/google-samples/hello-app:1.0",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "web1",
+                        "ports": [
+                            {
+                                "containerPort": 8080,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "resources": {
+                            "requests": {
+                                "cpu": "100m"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "default-token-86rmx",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "nodeName": "gke-jenkins-cd-default-pool-0afefa65-3b7c",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "default-token-86rmx",
+                        "secret": {
+                            "defaultMode": 420,
+                            "secretName": "default-token-86rmx"
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-04-10T18:04:44Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-04-10T18:04:46Z",
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": null,
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-04-10T18:04:44Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "docker://90822c750a595e691865b8e093c6405e0913bddb60cb3f75e4ca501cf3a0313d",
+                        "image": "gcr.io/google-samples/hello-app:1.0",
+                        "imageID": "docker-pullable://gcr.io/google-samples/hello-app@sha256:c62ead5b8c15c231f9e786250b07909daf6c266d0fcddd93fea882eb722c3be4",
+                        "lastState": {},
+                        "name": "web1",
+                        "ready": true,
+                        "restartCount": 0,
+                        "state": {
+                            "running": {
+                                "startedAt": "2019-04-10T18:04:46Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "10.154.0.49",
+                "phase": "Running",
+                "podIP": "10.24.0.10",
+                "qosClass": "Burstable",
+                "startTime": "2019-04-10T18:04:44Z"
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": "",
+        "selfLink": ""
+    }
+}

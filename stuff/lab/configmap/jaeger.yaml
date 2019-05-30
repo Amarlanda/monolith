@@ -1,0 +1,12 @@
+apiVersion: v1
+data:
+  host: jaeger-agent.istio-system
+  port: "6832"
+kind: ConfigMap
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","data":{"host":"jaeger-agent.istio-system","port":"6832"},"kind":"ConfigMap","metadata":{"annotations":{},"name":"jaeger","namespace":"default"}}
+  creationTimestamp: null
+  name: jaeger
+  selfLink: /api/v1/namespaces/default/configmaps/jaeger

@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: null
+  name: amar
+  selfLink: /api/v1/namespaces/default/serviceaccounts/amar
+secrets:
+- name: amar-token-xh85h

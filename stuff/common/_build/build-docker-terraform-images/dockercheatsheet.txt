@@ -1,0 +1,7 @@
+docker run -it --entrypoint /bin/bash  hashicorp/terraform:full
+docker image inspect alpine
+docker container run -d --name web1 -p 80:80 microsoft/iis
+docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress}}" cranky_heyrovsky
+
+# this to describe the node or anything else in kubernetes
+kubectl describe nodes <nodename>

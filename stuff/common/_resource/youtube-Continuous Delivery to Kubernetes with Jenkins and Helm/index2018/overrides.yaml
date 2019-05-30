@@ -1,0 +1,18 @@
+Master:
+  HostName: jenkins01.amarlanda.com
+  Cpu: "1000m"
+  Memory: "1000Mi"
+  adminPassword: admin
+  serviceType: ClusterIP
+  numExecutors: 2
+  InstallPlugins:
+    - kubernetes
+    - workflow-aggregator
+    - workflow-job
+    - credentials-binding
+    - git
+    - maven
+    - blue-ocean
+    - ghprb
+    - job-dsl
+  JavaOpts: "-Dhudson.slaves.NodeProvisioner.initialDelay=0 -Dhudson.slaves.NodeProvisioner.MARGIN=50 -Dhudson.slaves.NodeProvisioner.MARGIN0=0.85"

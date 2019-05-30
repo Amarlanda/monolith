@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: pilfering-horse-jenkins
+    chart: jenkins-0.38.0
+    component: pilfering-horse-jenkins-master
+    heritage: Tiller
+    release: pilfering-horse
+  name: pilfering-horse-jenkins
+  selfLink: /api/v1/namespaces/default/services/pilfering-horse-jenkins
+spec:
+  externalTrafficPolicy: Cluster
+  loadBalancerSourceRanges:
+  - 0.0.0.0/0
+  ports:
+  - name: http
+    nodePort: 32693
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    component: pilfering-horse-jenkins-master
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer: {}

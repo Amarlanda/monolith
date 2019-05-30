@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/component: jenkins-master
+    app.kubernetes.io/instance: jenkins01
+    app.kubernetes.io/managed-by: Tiller
+    app.kubernetes.io/name: jenkins
+    helm.sh/chart: jenkins-1.1.16
+  name: jenkins01
+  selfLink: /api/v1/namespaces/default/services/jenkins01
+spec:
+  externalTrafficPolicy: Cluster
+  loadBalancerSourceRanges:
+  - 0.0.0.0/0
+  ports:
+  - name: http
+    nodePort: 30855
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app.kubernetes.io/component: jenkins-master
+    app.kubernetes.io/instance: jenkins01
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer: {}

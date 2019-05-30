@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: null
+  name: bla
+  selfLink: /api/v1/namespaces/default/serviceaccounts/bla
+secrets:
+- name: bla-token-vs5jd

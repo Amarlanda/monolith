@@ -1,0 +1,30 @@
+[submodule "common/_resource/continuous-deployment-on-kubernetes"]
+	path = common/_resource/continuous-deployment-on-kubernetes
+	url = https://github.com/GoogleCloudPlatform/continuous-deployment-on-kubernetes.git
+[submodule "common/_resource/personal"]
+	path = common/_resource/personal
+	url = https://github.com/Amarlanda/personal.git
+[submodule "common/_resource/index2018"]
+	path = common/_resource/index2018
+	url = https://github.com/davidcurrie/index2018.git
+[submodule "common/_resource/jenkins"]
+	path = common/_resource/jenkins
+	url = https://github.com/Amarlanda/jenkins.git
+[submodule "common/_resource/youtube-fastjenkins-lachie83/croc-hunter"]
+	path = common/_resource/youtube-fastjenkins-lachie83/croc-hunter
+	url = https://github.com/Amarlanda/croc-hunter.git
+[submodule "publis-spaient-demo"]
+	path = publis-spaient-demo
+	url = https://github.com/Amarlanda/publis-spaient-demo.git
+[submodule "pipeline-demo"]
+	path = pipeline-demo
+	url = https://github.com/arehmandev/pipeline-demo.git
+[submodule "common/_resource/nigelpoulton-acloudguru-k8-deep-dive/k8s-sample-apps"]
+	path = common/_resource/nigelpoulton-acloudguru-k8-deep-dive/k8s-sample-apps
+	url = https://github.com/nigelpoulton/k8s-sample-apps.git
+[submodule "common/_resource/nigelpoulton-acloudguru-k8-deep-dive/Kubernetes_Deep_Dive_NP"]
+	path = common/_resource/nigelpoulton-acloudguru-k8-deep-dive/Kubernetes_Deep_Dive_NP
+	url = https://github.com/Amarlanda/Kubernetes_Deep_Dive_NP.git
+[submodule "common/_resource/kelseyhightower-istio-funny-k8/ping"]
+	path = common/_resource/kelseyhightower-istio-funny-k8/ping
+	url = https://github.com/Amarlanda/ping.git

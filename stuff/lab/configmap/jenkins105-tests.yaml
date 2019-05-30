@@ -1,0 +1,11 @@
+apiVersion: v1
+data:
+  run.sh: |-
+    @test "Testing Jenkins UI is accessible" {
+      curl --retry 48 --retry-delay 10 jenkins105:8080/login
+    }
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: jenkins105-tests
+  selfLink: /api/v1/namespaces/default/configmaps/jenkins105-tests

@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: null
+  name: tiller
+  selfLink: /api/v1/namespaces/default/serviceaccounts/tiller
+secrets:
+- name: tiller-token-d25nm

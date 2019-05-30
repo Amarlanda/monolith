@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: dsf-jenkins
+    chart: jenkins-0.38.0
+    component: dsf-jenkins-master
+    heritage: Tiller
+    release: dsf
+  name: dsf-jenkins
+  selfLink: /api/v1/namespaces/default/services/dsf-jenkins
+spec:
+  externalTrafficPolicy: Cluster
+  loadBalancerSourceRanges:
+  - 0.0.0.0/0
+  ports:
+  - name: http
+    nodePort: 30242
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    component: dsf-jenkins-master
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer: {}

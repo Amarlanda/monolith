@@ -1,0 +1,5 @@
+zfsd
+def bullshit = "asd"
+node {
+  sh ' ssfd'
+}
