@@ -1,4 +1,8 @@
 #alias \\z="make -f /home/aj/monolith/jigsaw/jigsaw.make"
+jigsaw profile:
+	alias \\z="make -f /home/aj/monolith/jigsaw/jigsaw.make"
+	tmux new -s myname
+
 
 install azure autocomplete:
 	_python_argcomplete() {
@@ -28,14 +32,17 @@ azure login:
 
 aws-login:
 	echo "user authetication for aws"
-	aws sts get-caller-identity
-	aws --version
-	rm -rf ~aj/.kube/
-	aws eks --region eu-west-1 update-kubeconfig --name atlas
-	aws eks list-clusters
+	cd /home/aj/monolith/jigsaw/login/ #login.sh
+	sh aws.sh 016807
 
-	kubectl config view
-	kubectl get svc
+	# aws sts get-caller-identity
+	# aws --version
+	# rm -rf ~aj/.kube/
+	# aws eks --region eu-west-1 update-kubeconfig --name atlas
+	# aws eks list-clusters
+	#
+	# kubectl config view
+	# kubectl get svc
 
 lee:
 	deploy-stuff:
@@ -56,7 +63,7 @@ lee:
 	canary:
 		kubectl apply -f ./configs/istio/routing-3.yaml
 buildocker:
-$(aws ecr get-login --no-include-email --region eu-west-1)
+$(aws ecr get-login	 --no-include-email --region eu-west-1)
 #docker build -t coop /home/aj/monolith/stuff/lab/Istio101/code/code-only-istio
 #docker tag coop:aplinetest 355555488900.dkr.ecr.eu-west-1.amazonaws.com/coop:aplinetest
 #docker push 355555488900.dkr.ecr.eu-west-1.amazonaws.com/coop:aplinetest
@@ -66,3 +73,4 @@ sh-login:
 	cd /home/aj/Downloads/util_aws_login/
 
 	cd /home/aj/monolith/stuff/lab/Istio101/configs
+#TODO:1-jg login script

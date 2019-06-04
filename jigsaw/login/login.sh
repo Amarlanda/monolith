@@ -6,7 +6,7 @@ trace() {
 
 USERNAME=amar@jigsaw.xyz
 PASSWORD=Dragoncontrol101
-JAR_PATH=./onelogin-aws-cli.jar
+JAR_PATH="/home/aj/monolith/jigsaw/login/onelogin-aws-cli.jar"
 
 if [ -f "${JAR_PATH}" ]; then
     trace "${JAR_PATH} exists... proceeding"
