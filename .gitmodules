@@ -28,3 +28,6 @@
 [submodule "common/_resource/kelseyhightower-istio-funny-k8/ping"]
 	path = common/_resource/kelseyhightower-istio-funny-k8/ping
 	url = https://github.com/Amarlanda/ping.git
+[submodule "lab/ai/rio_game"]
+	path = lab/ai/rio_game
+	url = https://github.com/Amarlanda/corona_game.git
