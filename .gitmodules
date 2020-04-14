@@ -31,3 +31,6 @@
 [submodule "lab/ai/rio_game"]
 	path = lab/ai/rio_game
 	url = https://github.com/Amarlanda/corona_game.git
+[submodule "lab/terraform/Getting-Started-Terraform"]
+	path = lab/terraform/Getting-Started-Terraform
+	url = https://github.com/ned1313/Getting-Started-Terraform.git
