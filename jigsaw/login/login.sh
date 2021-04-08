@@ -4,8 +4,8 @@ trace() {
   echo -e "TRACE: $*"
 }
 
-USERNAME=amar@jigsaw.xyz
-PASSWORD=Dragoncontrol101
+USERNAME=xxx
+PASSWORD=xxxx
 JAR_PATH="/home/aj/monolith/jigsaw/login/onelogin-aws-cli.jar"
 
 if [ -f "${JAR_PATH}" ]; then
